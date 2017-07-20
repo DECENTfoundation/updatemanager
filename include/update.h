@@ -19,7 +19,7 @@ extern "C"
 
 #elif defined( __GNUC__ )
 #if defined( __clang__ )
-#error "Define version numbers for your platform"
+//#error "Define version numbers for your platform"
    // define version of current build, for example:
 #define DECENT_PRODUCT_VERSION_MAJOR 0
 #define DECENT_PRODUCT_VERSION_MINOR 9
