@@ -17,8 +17,8 @@ public:
 
    CURL* m_curlSession;
 	
-   static size_t CHttpResponse::WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp);
-   static size_t CHttpResponse::Header_callback(char *buffer, size_t size, size_t nitems, void *userdata);
+   static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp);
+   static size_t Header_callback(char *buffer, size_t size, size_t nitems, void *userdata);
 
 	void 
 	GetStatus(

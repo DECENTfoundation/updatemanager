@@ -4,7 +4,7 @@
 #define CFG_DIR_NAME L"DECENT"
 
 
-   enum UserUpdateResult
+   enum UserUpdateResult : unsigned int
    {
       UserUpdateResult_Undefined = 0,
       UserUpdateResult_Error,
