@@ -4,20 +4,20 @@
 
 namespace Update
 {
-enum Http_SecChannel;
+//enum Http_SecChannel;
 class CHttpDownloader
 {
 public:
 	CHttpDownloader(
 		const char* address,				// base of URL 
 		const char* objName,				// rest of url
-									         // example: full url is https://update.softinengines.net/update.ini
-									         // address is:	L"update.decent.ch"
-									         // objName is:	L"/update.ini"
+									         // example: full url: update.decent.ch/update.ini
+									         // address is:	"update.decent.ch"
+									         // objName is:	"/update.ini"
 		const char* targetPath,			// directory path to downloaded file, ended with slash/backslah
 		const char* targetFileName,	// filename of downloaded file, if you donw want to store result in file pass NULL
 
-		Http_SecChannel secChannel,	// See UpdateMgr_SecChannel enumeration
+		enum Http_SecChannel secChannel,	// See UpdateMgr_SecChannel enumeration
 											   // for possible values
 		uint16_t port,
 		uint32_t maxDownloadedSize,	// if in downloading is exceeded, download is aborted
