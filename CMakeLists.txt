@@ -24,7 +24,7 @@ add_library( update
 target_include_directories(    
                             update  PUBLIC   
                             include               
-                            ${CMAKE_CURRENT_COURCE_DIR}
+                            "${CMAKE_CURRENT_COURCE_DIR}"
                           )
 if( WIN32 )
   target_sources(
