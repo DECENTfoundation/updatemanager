@@ -5,13 +5,13 @@
 namespace Update
 {
 
-enum RequestMethod {
+enum RequestMethod : unsigned int {
 	ReqMethod_GET = 0,
 	ReqMethod_HEAD,
 	ReqMethod_POST,
 };
 class CHttpResponse;
-//enum Http_SecChannel;
+enum Http_SecChannel : unsigned int;
 class CHttpRequest
 {
 public:
@@ -20,7 +20,7 @@ public:
       CURL* session,
       const char* address,
       const char* targetObj,
-      enum Http_SecChannel secChannel
+      Http_SecChannel secChannel
 		);
 	~CHttpRequest(void);
 

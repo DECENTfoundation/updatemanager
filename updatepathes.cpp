@@ -9,7 +9,7 @@ using namespace Update;
 
 CUpdatePathes::CUpdatePathes(void)
 {
-	DWORD numOfChars = 0;
+	uint32_t numOfChars = 0;
    char updateDir[1024];
 	std::string updateDirShort;
 	char* tempDir = getenv("TMP");
@@ -26,7 +26,7 @@ CUpdatePathes::CUpdatePathes(void)
    updateDirShort += "\\";
 	numOfChars = GetLongPathName(updateDirShort.c_str(), (LPSTR)updateDir, sizeof(updateDir) - 1);
    m_updateDir = updateDir;
-#elif
+#else
    m_updateDir = updateDirShort;// Is this ok for directory with downloaded files ?
 #error "Is this ok ?"
 #endif
