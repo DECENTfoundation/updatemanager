@@ -11,7 +11,7 @@ enum RequestMethod {
 	ReqMethod_POST,
 };
 class CHttpResponse;
-enum Http_SecChannel;
+//enum Http_SecChannel;
 class CHttpRequest
 {
 public:
@@ -20,7 +20,7 @@ public:
       CURL* session,
       const char* address,
       const char* targetObj,
-      Http_SecChannel secChannel
+      enum Http_SecChannel secChannel
 		);
 	~CHttpRequest(void);
 
