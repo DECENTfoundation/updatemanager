@@ -7,7 +7,7 @@ namespace Update
 
 struct SProgressControl;
 class CHttpRequest;
-//enum ProgBarState;
+//enum ProgBarState : unsigned int;
 
 class CHttpResponse
 {

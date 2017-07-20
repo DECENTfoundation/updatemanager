@@ -4,7 +4,7 @@
 
 namespace Update
 {
-//enum Http_SecChannel;
+enum Http_SecChannel : unsigned int;
 class CHttpDownloader
 {
 public:
@@ -17,7 +17,7 @@ public:
 		const char* targetPath,			// directory path to downloaded file, ended with slash/backslah
 		const char* targetFileName,	// filename of downloaded file, if you donw want to store result in file pass NULL
 
-		enum Http_SecChannel secChannel,	// See UpdateMgr_SecChannel enumeration
+		Http_SecChannel secChannel,	// See UpdateMgr_SecChannel enumeration
 											   // for possible values
 		uint16_t port,
 		uint32_t maxDownloadedSize,	// if in downloading is exceeded, download is aborted

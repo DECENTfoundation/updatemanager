@@ -3,7 +3,7 @@
 namespace Update
 {
 
-   enum Http_SecChannel
+   enum Http_SecChannel : unsigned int
    {
       SEC_CHANNEL_NO_SSL = 0,
       SEC_CHANNEL_SSL_WITH_CLIENT_CERT,
