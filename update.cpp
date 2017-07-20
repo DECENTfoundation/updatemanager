@@ -174,7 +174,7 @@ namespace Update
       targetObj += "\0";
    }
 
-   bool Update::Update(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, unsigned __int64 licenseUserID, bool* iniDownloadFinished)
+   bool Update::Update(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, uint64_t licenseUserID, bool* iniDownloadFinished)
    {
       uint32_t httpStatus = 0;
       bool result = true;

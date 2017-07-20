@@ -65,7 +65,7 @@ extern fn_SetProgBarTitle g_fn_SetProgBarTitle;
 extern fn_DestroyProgBar g_fn_DestroyProgBar;
 
 bool TryUpdate(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, uint64_t licenseUserID, bool* iniDownloadFinished);
-bool Update(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, unsigned __int64 licenseUserID, bool* iniDownloadFinished);
+bool Update(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, uint64_t licenseUserID, bool* iniDownloadFinished);
 
 void ReadInstalledVersion(std::string& prodVerMb);
 
