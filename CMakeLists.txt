@@ -18,6 +18,7 @@ add_library( update
             updatepathes.cpp
             updatethread.cpp
             version.cpp
+            stdafx.h
              ${HEADERS}
              )
              
