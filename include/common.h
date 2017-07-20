@@ -18,7 +18,7 @@
 
 #ifdef _MSC_VER
    uint32_t MpGetAppCfgDir(wchar_t* path, int maxChars);
-#elif
+#else
 #define MAX_PATH 256
 #endif
 
