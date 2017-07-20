@@ -17,7 +17,7 @@ namespace Update
 #error "Undefined compiler platform"
 #endif
 
-DWORD const WAIT_FOR_FIRST_UPDATE_MINUTES = 1;
+uint32_t const WAIT_FOR_FIRST_UPDATE_MINUTES = 1;
 
 // use SSL or not ?
 #define USE_SSL
