@@ -10,7 +10,7 @@ class CDetectUpdateThreadParams
 public:
 
 	CDetectUpdateThreadParams()
-	: m_invokedByUser(FALSE)
+	: m_invokedByUser(false)
 	, m_abort(0)
 	, m_licenseUserID(0ULL) 
 	, m_iniDownloadFinished(false)
