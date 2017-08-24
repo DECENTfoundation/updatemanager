@@ -278,7 +278,7 @@ CLogic::InstallSuitableVersion(
             pathToPackage += updateSetupFileName;
             std::string cmdLine = "sudo installer -pkg ";
             cmdLine += pathToPackage;
-            cmdLine += " -target ~";
+            cmdLine += " -target /";
             
             int result = system(cmdLine.c_str());
 // For example Windows creates msiexec process which runs installation package and it executes upgrade. 
