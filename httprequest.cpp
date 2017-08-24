@@ -6,7 +6,7 @@
 
 using namespace Update;
 
-
+char error_buffer[512];
 
 CHttpRequest::CHttpRequest(
    CURL* session,
@@ -18,18 +18,20 @@ CHttpRequest::CHttpRequest(
 , m_curlSession(session)
 {
    long curlProtocol = 0;
+   curl_easy_setopt(session, CURLOPT_ERRORBUFFER, error_buffer);// debug purposes
    switch (secChannel) {
    case SEC_CHANNEL_SSL_WITHOUT_CLIENT_CERT:
    case SEC_CHANNEL_SSL_WITH_CLIENT_CERT:
       curlProtocol = CURLPROTO_HTTPS;
+      //curl_easy_setopt(session, CURLOPT_USE_SSL, CURLUSESSL_ALL);
       break;
    case SEC_CHANNEL_NO_SSL:
       curlProtocol = CURLPROTO_HTTP;
       break;
    }
 
-   curl_easy_setopt(session, CURLOPT_PROTOCOLS, curlProtocol);
-   CURLcode res = curl_easy_perform(session);
+   //curl_easy_setopt(session, CURLOPT_PROTOCOLS, curlProtocol);
+   //CURLcode res = curl_easy_perform(session);
    std::string url = address;
    url += targetObj;
    curl_easy_setopt(session, CURLOPT_URL, url.c_str());// update.decentgo.com/update.ini?&version=0.9.0.0&os=6232

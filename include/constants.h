@@ -3,7 +3,7 @@
 
 namespace Update
 {
-   char const* const SERVER_ADDRESS = "https://update2x.decent.ch";
+   char const* const SERVER_ADDRESS = "https://update.decent.ch";
    char const* const UPDATE_ROOT_DIR_ON_SERVER = "/";
 #if defined(_MSC_VER)	
 	char const* const UPDATE_INI_FILENAME = "update.ini";

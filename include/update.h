@@ -10,8 +10,8 @@ extern "C"
 {
 
 #if defined( _MSC_VER )
-#define DECENT_PRODUCT_VERSION_MAJOR 0
-#define DECENT_PRODUCT_VERSION_MINOR 9
+#define DECENT_PRODUCT_VERSION_MAJOR 1
+#define DECENT_PRODUCT_VERSION_MINOR 0
 #define DECENT_PRODUCT_VERSION_BUILD 1
 #define DECENT_PRODUCT_VERSION_SPECIAL 0
 
@@ -21,8 +21,8 @@ extern "C"
 #if defined( __clang__ )
 //#error "Define version numbers for your platform"
    // define version of current build, for example:
-#define DECENT_PRODUCT_VERSION_MAJOR 0
-#define DECENT_PRODUCT_VERSION_MINOR 9
+#define DECENT_PRODUCT_VERSION_MAJOR 1
+#define DECENT_PRODUCT_VERSION_MINOR 0
 #define DECENT_PRODUCT_VERSION_BUILD 1
 #define DECENT_PRODUCT_VERSION_SPECIAL 0
 
