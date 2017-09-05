@@ -7,8 +7,23 @@
 
 #ifndef _MSC_VER
 #include <sys/timeb.h>
-#endif
 
+uint32_t GetTickCount(void)
+{
+   std::chrono::milliseconds uptime(0u);
+   struct timeval ts;
+   std::size_t len = sizeof(ts);
+   int mib[2] = { CTL_KERN, KERN_BOOTTIME };
+   if (sysctl(mib, 2, &ts, &len, NULL, 0) == 0)
+   {
+      uptime = std::chrono::milliseconds(
+         static_cast<unsigned long long>(ts.tv_sec) * 1000ULL +
+         static_cast<unsigned long long>(ts.tv_usec) / 1000ULL
+      );
+   }
+   return uptime;
+}
+#endif
 
 
 using namespace Update;
@@ -77,9 +92,6 @@ void MpGetCurrentSystemTime(int64_t* fileTime)
 #error "Undefined Compiler platform"
 #endif
 }
-
-
-
 
 uint32_t __stdcall DetectUpdateThread(void* param)
 {
