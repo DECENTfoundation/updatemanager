@@ -150,7 +150,7 @@ CLogic::InstallSuitableVersion(
 	int updateCounter,
 	bool& foundUpdate,
 	uint32_t& httpStatus,
-	unsigned __int64 licenseUserID
+	uint64_t licenseUserID
 	)
 {
 	uint32_t err = 0;
@@ -184,11 +184,11 @@ CLogic::InstallSuitableVersion(
 			result = false;
 			break;
 		}
-        if(CanBeApplied(iter->second.m_updateVer, iter->second.m_acumulFrom, iter->second.m_acumulTo) == TRUE)	{
+        if(CanBeApplied(iter->second.m_updateVer, iter->second.m_acumulFrom, iter->second.m_acumulTo) == true)	{
 			
 			foundUpdate = true;
 
-			if(DisplayRevisionHistory(targetObjRevHist, userResult, httpStatus, abort, hRequest, hideCertQuestions) == FALSE)	{
+			if(DisplayRevisionHistory(targetObjRevHist, userResult, httpStatus, abort, hRequest, hideCertQuestions) == false)	{
             userClosesRevHistory = true;
 				break;
 			}
@@ -209,7 +209,7 @@ CLogic::InstallSuitableVersion(
 				licenseUserID
 				);
 			//httpStatus = 200;
-			if(httpStatus == 200 && maxSizeExceeded == FALSE && err == 0 && *abort == FALSE)	{
+			if(httpStatus == 200 && maxSizeExceeded == false && err == 0 && *abort == 0)	{
 #if defined( _MSC_VER )
             std::string wCmdLine1;// first part of command line (next follows path to *.msi)
             std::string wCmdLine2;// second part of command line

@@ -59,7 +59,7 @@ public:
 		int updateCounter,
 		bool& foundUpdate,
 		uint32_t& httpStatus,
-		unsigned __int64 licenseUserID
+		uint64_t licenseUserID
 		);
 
 };
