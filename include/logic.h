@@ -32,7 +32,7 @@ private:
 		bool& maxSizeExceeded,
 		bool hideCertQuestions,
 		int updateCounter,
-		unsigned __int64 licenseUserID
+		uint64_t licenseUserID
 		);
 
 	bool 

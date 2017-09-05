@@ -105,8 +105,8 @@ bool CHttpDownloader::Download(uint32_t& httpStatus, bool& maxSizeExceeded,  uin
                m_stream = NULL;
             }
 
-            if (httpStatus == 200 && maxSizeExceeded == FALSE && err == 0 && abortedByUser == FALSE)
-               result = TRUE;
+            if (httpStatus == 200 && maxSizeExceeded == false && err == 0 && abortedByUser == 0)
+               result = true;
             else               
                remove(downloadedFilePath.c_str());
          }

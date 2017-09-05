@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
-# TODO: ADD CURL LIBRARY 
+find_package(CURL REQUIRED)
+include_directories(${CURL_INCLUDE_DIRS})
 
 file( GLOB HEADERS "*.h" "include/*.h" )
 
