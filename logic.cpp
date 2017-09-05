@@ -353,7 +353,7 @@ CLogic::DisplayRevisionHistory(
 		);
 
 	if(revHistDownloader.get())	{
-		if(revHistDownloader->Download(httpStatus, maxSizeExceeded, errInDownload, abort, hRequest, hideCertQuestions, "") == TRUE)	{
+		if(revHistDownloader->Download(httpStatus, maxSizeExceeded, errInDownload, abort, hRequest, hideCertQuestions, "") == true)	{
 			revHistSize = ftell(revHistDownloader->m_stream);
 			if(revHistSize) {
 #ifdef _MSC_VER

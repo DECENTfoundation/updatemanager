@@ -312,7 +312,7 @@ namespace Update
       return result;
    }
 
-   bool Update::TryUpdate(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, unsigned __int64 licenseUserID, bool* iniDownloadFinished)
+   bool Update::TryUpdate(bool invokedByUser, uint32_t updateCounter, uint32_t* abort, bool hideCertQuestions, uint64_t licenseUserID, bool* iniDownloadFinished)
    {
       bool result = false;
 
