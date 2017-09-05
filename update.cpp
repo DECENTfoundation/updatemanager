@@ -212,8 +212,8 @@ namespace Update
                   SSL_SEC_CHANNEL,
                   USED_PORT,
                   MAX_DOWNLOAD_UPDATE_INI,	// max download size
-                  TRUE,
-                  FALSE
+                  true,
+                  false
                )
             );
 
@@ -235,7 +235,7 @@ namespace Update
             }
             else {
 
-               if (httpStatus == 200 && errInDownload == 0 && maxSizeExceeded == FALSE) {
+               if (httpStatus == 200 && errInDownload == 0 && maxSizeExceeded == false) {
 
                   // updateCounter a lastUpdate (time) sa menia tu, pretoze inak by sa stale ozyval a log by bol plny kontaktov v minutovych intervaloch
                   updateCounter++;
@@ -246,7 +246,7 @@ namespace Update
                   SrvSettings::Set_uint64_t_Value(lastUpdateFt, SrvSettings::LAST_UPDATE_FILETIME_VAL_NAME);
 
                   CIniParser parser(iniDownloader->m_stream);
-                  if (parser.Parse() == FALSE)
+                  if (parser.Parse() == false)
                      return false;
 
                   if (parser.m_lines.size() == 0) {                
@@ -291,8 +291,13 @@ namespace Update
             break;
          case UserUpdateResult_ErrorHttpStatus: {
             char statusCode[16];
+            
+#if defined( _MSC_VER )
             memset(statusCode, 0, sizeof(statusCode));
             _ultoa(httpStatus, statusCode, 10);
+#else
+            sprintf(statusCode, "%i", httpStatus);
+#endif
             // alert
          } break;
          case UserUpdateResult_ErrorMsiStarting:
