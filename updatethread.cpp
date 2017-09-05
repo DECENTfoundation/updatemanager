@@ -8,6 +8,7 @@
 #ifndef _MSC_VER
 #include <sys/timeb.h>
 #include <sys/sysctl.h>
+#include <chrono>
 
 uint32_t GetTickCount(void)
 {
