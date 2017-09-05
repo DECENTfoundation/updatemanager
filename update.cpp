@@ -164,8 +164,13 @@ namespace Update
       }
 #elif defined( __GNUC__ )
 #if defined( __clang__ )
-#error "Add code which detects if your client build is 32 bit or 64 bit"
+
+#if __x86_64__ || __ppc64__
       targetObj += "64";
+#else
+      targetObj += "32";
+#endif
+
 #endif
 #else
 #error "Undefined compiler platform"
