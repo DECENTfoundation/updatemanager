@@ -23,10 +23,9 @@ uint32_t GetTickCount(void)
          static_cast<unsigned long long>(ts.tv_usec) / 1000ULL
       );
    }
-   return uptime;
+   return uptime.count();
 }
 #endif
-
 
 using namespace Update;
 
