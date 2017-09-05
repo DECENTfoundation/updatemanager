@@ -18,7 +18,7 @@ TryUpdateIfNeeded(
 	bool invokedByUser,			   // user started update
    CURL** curlSession,           // session handle
 	uint32_t* abort,						// update was aborted - it is filled in update thread function								
-	unsigned __int64 licenseUserID,	// license or user identification
+	uint64_t licenseUserID,	      // license or user identification
 	bool* iniDownloadFinished			// when *.ini file is downloaded it is set to true
 	);
 
@@ -179,7 +179,7 @@ TryUpdateIfNeeded(
 	bool invokedByUser,
    CURL** curlSession,
 	uint32_t* abort,
-	unsigned __int64 licenseUserID,
+	uint64_t licenseUserID,
 	bool* iniDownloadFinished
 	)
 {
