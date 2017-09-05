@@ -31,7 +31,6 @@ CUpdatePathes::CUpdatePathes(void)
    m_updateDir = updateDir;
 #else
    m_updateDir = updateDirShort;// Is this ok for directory with downloaded files ?
-#error "Is this ok ?"
 #endif
 	
 	m_updateIniFilePath += m_updateDir;

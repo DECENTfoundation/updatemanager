@@ -5,6 +5,10 @@
 #include "update.h"
 #include "constants.h"
 
+#ifndef _MSC_VER
+#include <sys/timeb.h>
+#endif
+
 
 
 using namespace Update;
