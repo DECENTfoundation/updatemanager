@@ -3,6 +3,8 @@
 #include "version.h"
 
 #include <strstream>
+#include <iostream>
+#include <sstream>
 
 using namespace Update;
 
@@ -37,10 +39,17 @@ bool CIniParser::Parse(void)
 		if(fread((void*)&buffer[0], 1, buffer.size() - 1, m_file) != (buffer.size() - 1))
 			return false; //exception
 
-		std::strstream stream((char*)&buffer[0], (int)buffer.size());
-		
-		
-		getline(stream, line, '\n');
+		std::istringstream mystream;
+		//mystream.str((char*)&buffer[0], (int)buffer.size(), std::ios::binary);
+		mystream.str((char*)&buffer[0]);
+		//std::string test = stream.str();
+		//stream.clear();
+		//stream.sync();
+		//stream.ignore();
+		//stream.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		//stream.seekg(0,std::ios::beg);
+
+		std::getline(mystream, line, '\n');
 		//line += '\0';
 		std::strstream::pos_type p;
 		while(1)	{
@@ -70,8 +79,10 @@ bool CIniParser::Parse(void)
 				//m_lines.push_back(curIniLine);
 			}
 			
-			getline(stream, line, '\n');
-			if(stream.tellg() == (std::strstream::pos_type)(-1))
+			getline(mystream, line, '\n');
+			//if(mystream.tellg() == (std::strstream::pos_type)(-1))
+				//break;
+			if(line.size() == 0)
 				break;
 		}
 
