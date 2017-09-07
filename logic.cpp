@@ -276,11 +276,14 @@ CLogic::InstallSuitableVersion(
 //#error "Create code which installs package: updateSetupFileName downloaded in path: pathes.m_updateSetupFilePath"
             std::string pathToPackage = pathes.m_updateSetupFilePath;
             pathToPackage += updateSetupFileName;
-            std::string cmdLine = "sudo installer -pkg ";
+            //std::string cmdLine = "sudo installer -pkg ";
+            std::string cmdLine = "open ";// TODO - MacOS runs process "installer" which displays installation wizard.  
+                                           // It is needed to research if that process can run in silent mode with help of some command line parameters
+                                           // and to use silent mode for updgrading where is not needed to go through all wizard steps.
             cmdLine += pathToPackage;
-            cmdLine += " -target /";
+            //cmdLine += " -target /";
             
-            int result = system(cmdLine.c_str());
+            int cmdLineResult = system(cmdLine.c_str());
 // For example Windows creates msiexec process which runs installation package and it executes upgrade. 
 // It is up on Msi to detect installed application with different version, deciding about superseeding some components
 // removing old binaries and install new binaries and other tasks relating to installation package database.
