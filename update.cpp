@@ -54,6 +54,7 @@ namespace Update
       );
 #elif defined( __GNUC__ )
 #if defined( __clang__ )
+      ret = 1;
 //#error "Write function which retrieves version number from installation database, or let version retrieved from above hard-coded defines"
 #endif
 #endif

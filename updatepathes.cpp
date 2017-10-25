@@ -32,7 +32,7 @@ CUpdatePathes::CUpdatePathes(void)
 	if(tempDir == NULL)
 		tempDir = getenv("SystemDrive");
 #else
-   char* tempDir = getenv("TMP");
+   char* tempDir = getenv("TMPDIR");
 #endif
 
 	updateDirShort = tempDir;

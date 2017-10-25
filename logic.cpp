@@ -184,6 +184,7 @@ CLogic::InstallSuitableVersion(
 			result = false;
 			break;
 		}
+			CVersion* updVer = iter->second.m_updateVer;
         if(CanBeApplied(iter->second.m_updateVer, iter->second.m_acumulFrom, iter->second.m_acumulTo) == true)	{
 			
 			foundUpdate = true;
