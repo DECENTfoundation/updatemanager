@@ -2,7 +2,7 @@
 #include "updatepathes.h"
 #include "constants.h"
 
-#include <boost/filesystem.hpp>
+//#include <boost/filesystem.hpp>
 
 
 
@@ -14,8 +14,10 @@ CUpdatePathes::CUpdatePathes(void)
 	uint32_t numOfChars = 0;
    char updateDir[1024];
 	std::string updateDirShort;
+/*
    boost::filesystem::path p = boost::filesystem::temp_directory_path();
    std::string str_path = p.string();
+
 #if defined( _MSC_VER )
    str_path += "\\";
 #else
@@ -23,7 +25,8 @@ CUpdatePathes::CUpdatePathes(void)
 #endif
    
    m_updateDir = str_path;
-   /*
+   */
+   
 #if defined( _MSC_VER )
 	char* tempDir = getenv("TMP");
 	if(tempDir == NULL)
@@ -43,9 +46,8 @@ CUpdatePathes::CUpdatePathes(void)
 	numOfChars = GetLongPathName(updateDirShort.c_str(), (LPSTR)updateDir, sizeof(updateDir) - 1);
    m_updateDir = updateDir;
 #else
-   m_updateDir = updateDirShort;// Is this ok for directory with downloaded files ?
+   m_updateDir = updateDirShort;
 #endif
-*/
 	
 	m_updateIniFilePath += m_updateDir;
 	m_updateIniFilePath += UPDATE_INI_FILENAME;
