@@ -22,8 +22,8 @@ extern "C"
 //#error "Define version numbers for your platform"
    // define version of current build, for example:
 #define DECENT_PRODUCT_VERSION_MAJOR 1
-#define DECENT_PRODUCT_VERSION_MINOR 0
-#define DECENT_PRODUCT_VERSION_BUILD 1
+#define DECENT_PRODUCT_VERSION_MINOR 1
+#define DECENT_PRODUCT_VERSION_BUILD 0
 #define DECENT_PRODUCT_VERSION_SPECIAL 0
 
 #endif
