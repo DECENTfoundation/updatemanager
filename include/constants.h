@@ -10,8 +10,13 @@ namespace Update
 	char const* const REV_HISTORY_FILENAME = "revhistory.txt";
 #elif defined( __GNUC__ )
 #if defined( __clang__ )
+#if __clang_major__ == 7
+   char const* const UPDATE_INI_FILENAME = "update_mac_core2.ini";
+   char const* const REV_HISTORY_FILENAME = "revhistory_mac.txt";
+#else
    char const* const UPDATE_INI_FILENAME = "update_mac.ini";
    char const* const REV_HISTORY_FILENAME = "revhistory_mac.txt";
+#endif
 #endif
 #elif
 #error "Undefined compiler platform"
