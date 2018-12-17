@@ -158,10 +158,10 @@ namespace Update
          fnIsWow64Process(GetCurrentProcess(), &isWow64);
       }
       if (isWow64 == TRUE) {
-         targetObj += "64";
+         targetObj += "32";
       }
       else {
-         targetObj += "32";
+         targetObj += "64";
       }
 #elif defined( __GNUC__ )
 #if defined( __clang__ )
