@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.7)
 
 find_package(CURL REQUIRED)
-include_directories(${CURL_INCLUDE_DIRS})
 
-file( GLOB HEADERS "*.h" "include/*.h" )
+file( GLOB HEADERS "include/*.h" )
 
-add_library( update
+add_library(update
             common.cpp
             httpdownloader.cpp
             httprequest.cpp
@@ -19,24 +18,21 @@ add_library( update
             updatepathes.cpp
             updatethread.cpp
             version.cpp
-            stdafx.h
              ${HEADERS}
              )
-             
-target_include_directories(    
-                            update  PUBLIC   
-                            include               
-                            "${CMAKE_CURRENT_COURCE_DIR}"
+
+target_include_directories(update
+                           PUBLIC include
+                           PRIVATE ${CURL_INCLUDE_DIRS}
                           )
+
 if( WIN32 )
-  target_sources(
-              update  PUBLIC
-              getversionex.cpp
-               stdafx.cpp
-               )
+  target_sources(update PRIVATE
+                 getversionex.cpp
+                 stdafx.cpp
+                 stdafx.h
+                )
+
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
   set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-  #target_link_libraries( )
-else()
-#  target_link_libraries( )
 endif()
