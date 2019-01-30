@@ -32,7 +32,7 @@ if( WIN32 )
                  stdafx.cpp
                  stdafx.h
                 )
-
+  target_link_libraries(update msi)
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Yustdafx.h /FIstdafx.h")
   set_source_files_properties(stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 endif()
