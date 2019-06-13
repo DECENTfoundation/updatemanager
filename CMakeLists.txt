@@ -30,5 +30,5 @@ if( WIN32 )
   target_sources(update PRIVATE
                  getversionex.cpp
                 )
-  target_link_libraries(update msi)
+  target_link_libraries(update msi rpcrt4)
 endif()

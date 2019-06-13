@@ -38,10 +38,24 @@ Set_uint64_t_Value(
    const char* name
    );
 
+uint32_t
+Get_string_Value(
+   char* buff,
+   int buffSize,
+   const char* name
+);
+
+uint32_t
+Set_string_Value(
+   const char* value,
+   const char* name
+);
+
 extern const char* DETECT_UPDATE_COUNTER_VAL_NAME;// Detect update counter
 extern const char* LAST_UPDATE_FILETIME_VAL_NAME;// Last Detect time
 extern const char* START_UPDATE_FILETIME_VAL_NAME;// Start of update
 extern const char* UPDATE_PERIOD_HOURS_VAL_NAME;// How often to update
+extern const char* UPDATE_NAME;
 
 extern const uint32_t UpdatePeriodDefaultIndex;
 extern const uint32_t UpdatepPeriodHighestIndex;

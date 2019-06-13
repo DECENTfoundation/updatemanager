@@ -12,6 +12,7 @@ const char* DETECT_UPDATE_COUNTER_VAL_NAME = "DetectUpdateCounter";
 const char* LAST_UPDATE_FILETIME_VAL_NAME = "LastDetectedFTime";
 const char* START_UPDATE_FILETIME_VAL_NAME = "StartOfUpdateFTime";
 const char* UPDATE_PERIOD_HOURS_VAL_NAME = "UpdatePeriodHours";
+const char* UPDATE_NAME = "Name";
 
 	
 
@@ -221,6 +222,79 @@ uint32_t DelValue(const char* name)
 	return 1;//TODO:
 #else
 	#error "Undefined Compiler platform"
+#endif
+}
+
+uint32_t
+Get_string_Value(
+   char* buff,
+   int buffSize,
+   const char* name
+)
+{
+#if defined( _MSC_VER )
+   DWORD err = 0;
+   HKEY hKey = NULL;
+   TCHAR serviceRegPath[MAX_PATH];
+   DWORD defaultVal = 0;
+
+   lstrcpy(serviceRegPath, TEMPORARY_WIN_REG_PATH);
+
+   err = RegOpenKeyEx(HKEY_CURRENT_USER, serviceRegPath, 0,
+      KEY_READ | KEY_QUERY_VALUE, &hKey);
+   if(err == ERROR_FILE_NOT_FOUND) {
+      DWORD disp = 0;
+      err = RegCreateKeyEx(HKEY_CURRENT_USER, serviceRegPath, 0, NULL, 0,
+         KEY_ALL_ACCESS, NULL, &hKey, &disp);
+   }
+   if(err == 0) {
+
+      DWORD type = 0;
+      err = RegQueryValueEx(hKey, name, NULL, &type, (LPBYTE)buff, (LPDWORD)&buffSize);
+      RegCloseKey(hKey);
+      if(err == ERROR_FILE_NOT_FOUND)
+         return err;
+      if(type != REG_SZ) {
+         buff[0] = 0;
+         buffSize = 0;
+         err = ERROR_FILE_NOT_FOUND;
+      }
+   }
+
+   return err;
+#elif defined( __GNUC__ )
+   return 1;//TODO:
+#else
+#error "Undefined Compiler platform"
+#endif
+}
+
+uint32_t
+Set_string_Value(
+   const char* value,
+   const char* name
+)
+{
+#if defined( _MSC_VER )
+   DWORD err = 0;
+   HKEY hKey = NULL;
+
+   char serviceRegPath[MAX_PATH];
+   lstrcpy(serviceRegPath, TEMPORARY_WIN_REG_PATH);
+
+   err = RegOpenKeyEx(HKEY_CURRENT_USER, serviceRegPath, 0, KEY_ALL_ACCESS, &hKey);
+   if(err == ERROR_FILE_NOT_FOUND) {
+      DWORD disp = 0;
+      err = RegCreateKeyEx(HKEY_CURRENT_USER, serviceRegPath, 0, NULL, 0, KEY_ALL_ACCESS, NULL, &hKey, &disp);
+   }
+   if(err == 0) {
+      err = RegSetValueEx(hKey, name, 0, REG_SZ, (LPBYTE)value, (DWORD)strlen(value));
+   }
+   return err;
+#elif defined( __GNUC__ )
+   return 1;//TODO
+#else
+#error "Undefined compiler platform"
 #endif
 }
 

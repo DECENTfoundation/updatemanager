@@ -25,6 +25,7 @@ namespace Update
    const uint32_t MAX_DOWNLOAD_UPDATE_INI = 16384;
    const uint32_t MAX_DOWNLOAD_UPDATE_HELP = 10000000;
 
+   void CreateGuid(char* buff, int buffSize);
   
 }
 
@@ -84,6 +85,23 @@ namespace Update
    typedef BOOL(WINAPI *LPFN_Wow64DisableWow64FsRedirection) (PVOID*);
    typedef BOOL(WINAPI *LPFN_Wow64RevertWow64FsRedirection) (PVOID);
 #endif
+
+   void Update::CreateGuid(char* buff, int buffSize)
+   {
+#ifdef _MSC_VER
+      UUID guid;
+      RPC_STATUS status = UuidCreate(&guid);
+      RPC_CSTR guidStr = NULL;
+      status = UuidToStringA(&guid, &guidStr);
+      if(status == 0) {
+         strncpy(buff, (const char*)guidStr, buffSize);
+         RpcStringFreeA(&guidStr);
+      }
+#else
+      //TODO: add for other platforms 
+#endif
+   }
+
    void Update::MakeRestOfURL(std::string& targetObj, int updateCounter, uint64_t licenseUserID)
    {
       //CIdentification identification;
@@ -163,6 +181,22 @@ namespace Update
       else {
          targetObj += "64";
       }
+      
+      char name[64];
+      memset(name, 0, sizeof(name));
+      DWORD err = SrvSettings::Get_string_Value(name, sizeof(name) - 1, SrvSettings::UPDATE_NAME);
+      if(err == ERROR_FILE_NOT_FOUND) {
+         CreateGuid(name, sizeof(name) - 1);
+         err = SrvSettings::Set_string_Value(name, SrvSettings::UPDATE_NAME);
+         if(err != 0)
+            name[0] = 0;
+      }
+      if(strlen(name)) {
+         targetObj += "&";
+         targetObj += "name=";
+         targetObj += name;
+      }
+
 #elif defined( __GNUC__ )
 #if defined( __clang__ )
 
