@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
+set( CMAKE_CXX_STANDARD 11 )
+
 find_package(CURL REQUIRED)
 
 file( GLOB HEADERS "include/*.h" )
