@@ -14,6 +14,8 @@
 
 #ifdef _MSC_VER
 #include <msi.h>
+#else
+#include <uuid/uuid.h>
 #endif
 
 
@@ -98,7 +100,11 @@ namespace Update
          RpcStringFreeA(&guidStr);
       }
 #else
-      //TODO: add for other platforms 
+      uuid_t uuid;
+      uuid_generate_random(uuid);
+      char s[37];
+      memset(&uuid, 0, sizeof(uuid));
+      uuid_unparse(uuid, buff);
 #endif
    }
 
